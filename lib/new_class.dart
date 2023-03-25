@@ -25,19 +25,21 @@ class _NewClassState extends State<NewClass> {
 
   final _nomeController = TextEditingController();
   final _localController = TextEditingController();
+  final _horaController = TextEditingController();
 
-  // TimeOfDay _time = const TimeOfDay(hour: 7, minute: 15);
+  TimeOfDay _time = const TimeOfDay(hour: 7, minute: 15);
 
-  // void _selectTime() async {
-  //   final TimeOfDay? newTime = await showTimePicker(
-  //     context: context,
-  //     initialTime: _time,
-  //   );
-  //   if (newTime != null) {
-  //     setState(() {
-  //       _time = newTime;
-  //     });
-  //   }
+  void _selectTime() async {
+    final TimeOfDay? newTime = await showTimePicker(
+      context: context,
+      initialTime: _time,
+    );
+    if (newTime != null) {
+      setState(() {
+        _time = newTime;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +52,8 @@ class _NewClassState extends State<NewClass> {
                 MyClass myClass = MyClass(
                     name: _nomeController.text,
                     dayOfWeek: dropdownValue,
-                    local: _localController.text);
+                    local: _localController.text,
+                    hora: _horaController.text);
                 Navigator.pop(context, myClass);
               },
               icon: const Icon(Icons.save_rounded))
@@ -91,6 +94,17 @@ class _NewClassState extends State<NewClass> {
                 dropdownValue = value;
               });
             },
+          ),
+          const SizedBox(
+            height: 12,
+          ),
+          ElevatedButton(
+            onPressed: _selectTime,
+            child: const Text('Início da aula'),
+          ),
+          const SizedBox(height: 8),
+          Text(
+            'Horário: ${_time.format(context)}',
           ),
         ]),
       ),

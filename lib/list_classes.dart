@@ -41,17 +41,17 @@ class _ListClassesState extends State<ListClasses> {
   }
 
   Widget buildItem(MyClass myClass) => ListTile(
-        leading: const Icon(Icons.favorite_outline),
-        // leading: myClass.like
-        //     ? const Icon(Icons.favorite)
-        //     : const Icon(Icons.favorite_outline),
-        title: Text(myClass.name),
-        subtitle: Text(myClass.dayOfWeek),
-        trailing: Text(myClass.local),
-        // onLongPress: () {
-        //   setState(() {
-        //     myClass.like = !myClass.like;
-        //   });
-        // },
+      leading: const Icon(Icons.favorite_outline),
+      // leading: myClass.like
+      //     ? const Icon(Icons.favorite)
+      //     : const Icon(Icons.favorite_outline),
+      title: Text(myClass.name),
+      subtitle: Text(myClass.dayOfWeek),
+      trailing: Text(myClass.local)
+      // onLongPress: () {
+      //   setState(() {
+      //     myClass.like = !myClass.like;
+      //   });
+      // },
       );
 }
